@@ -1,1 +1,2 @@
-[Homework 6](http://imm.edumedia.ca/faze0007/mtm1526/homework-6/)
+[link to phpfog](http://basketballcourts.phpfogapp.com/)
+[link to design Brief](http://imm.edumedia.ca/faze0007/mtm1526/open-data-app)
