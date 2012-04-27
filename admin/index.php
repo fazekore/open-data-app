@@ -1,35 +1,35 @@
 <?php
 
+require_once '../includes/users.php';
+
+if (!user_signed_in()) {
+	header('Location: sign-in.php');
+	exit;
+}
+
 require_once '../includes/db.php';
 
 $results = $db->query('
-	SELECT id, name, longitude, latitude
+	SELECT id, name, adr, lat, lng, rate_count, rate_total
 	FROM courts
 	ORDER BY name ASC
 ');
 
-?><!DOCTYPE HTML>
-<html>
+?><!DOCTYPE html>
+<html lang="en-ca">
 <head>
 	<meta charset="utf-8">
-	<title>Basketball Courts</title>
+	<title>Admin · Basketball Court Finder</title>
 </head>
 <body>
-	
-	<a href="add.php">Add</a>
-    <ul>
-	
+
+	<a href="sign-out.php">Sign Out</a>
+
+	<ol class="courts">
 	<?php foreach ($results as $court) : ?>
-		<li>
-			<?php echo $court['name']; ?>
-			&bull;
-			
-            <a href="edit.php?id=<?php echo $court['id']; ?>">Edit</a>
-            
-			<a href="delete.php?id=<?php echo $court['id']; ?>">Delete</a>
-		</li>
+		<li><?php echo $court['name']; ?></li>
 	<?php endforeach; ?>
-	</ul>
-	
+	</ol>
+
 </body>
 </html>
